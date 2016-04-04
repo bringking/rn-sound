@@ -1,6 +1,6 @@
 {
   "name": "rn-sound",
-  "version": "0.7.5",
+  "version": "0.7.6",
   "description": "React Native module for playing sound clips on iOS and Android",
   "main": "sound.js",
   "repository": {
