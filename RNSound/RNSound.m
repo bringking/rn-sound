@@ -77,6 +77,8 @@ RCT_EXPORT_METHOD(setCategory:(nonnull NSNumber*)key withValue:(NSString*)catego
     [session setCategory: AVAudioSessionCategorySoloAmbient error: nil];
   } else if ([categoryName isEqual: @"Playback"]) {
     [session setCategory: AVAudioSessionCategoryPlayback error: nil];
+    [session setActive: YES error: nil];
+    [[UIApplication sharedApplication] beginReceivingRemoteControlEvents];
   } else if ([categoryName isEqual: @"Record"]) {
     [session setCategory: AVAudioSessionCategoryRecord error: nil];
   } else if ([categoryName isEqual: @"PlayAndRecord"]) {
