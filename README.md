@@ -1,4 +1,4 @@
-# react-native-sound
+# rn-sound
 
 React Native module for playing sound clips on iOS and Android.
 
@@ -27,14 +27,14 @@ Get/set current time | ✓ | ✓
 First install the npm package from your app directory:
 
 ```javascript
-npm install react-native-sound --save
+npm install rn-sound --save
 ```
 
 ### Installation on iOS
 
 In XCode, right click **Libraries**.
 Click **Add Files to "[Your project]"**.
-Navigate to **node_modules/react-native-sound**.
+Navigate to **node_modules/rn-sound**.
 Add the file **RNSound.xcodeproj**.
 
 In the *Project Navigator*, select your project.
@@ -55,7 +55,7 @@ Run your project (⌘+R).
 Edit `android/settings.gradle` to declare the project directory:
 ```
 include ':RNSound', ':app'
-project(':RNSound').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-sound/android')
+project(':RNSound').projectDir = new File(rootProject.projectDir, '../node_modules/rn-sound/android')
 ```
 
 Edit `android/app/build.gradle` to declare the project dependency:
@@ -91,8 +91,8 @@ Save your sound clip files under the directory `android/app/src/main/res/raw`.
 ## Basic usage
 
 ```js
-// Import the react-native-sound module
-var Sound = require('react-native-sound');
+// Import the rn-sound module
+var Sound = require('rn-sound');
 
 // Sound.enableInSilenceMode(true); // if need to enable playback in silence mode, currently for iOS only 
 
