@@ -148,10 +148,18 @@ whoosh.release();
 ```
 
 ## API
-### `constructor(filename, basePath, onError)`
+### `constructor(filename, basePath, options = {}, onError = () => false)`
 `filename` {string} Either absolute or relative path to the sound file
 
 `basePath` {?string} Optional base path of the file. Omit this or pass `''` if `filename` is an absolute path. Otherwise, you may use one of the predefined directories: `Sound.MAIN_BUNDLE`, `Sound.DOCUMENT`, `Sound.LIBRARY`, `Sound.CACHES`.
+
+`options`{?object} Options object with the following options-
+```
+{
+  artist:"Some Artist", // Shows artist title in iOS Control Center
+  title:"Some track title" // Show Track title in iOS Control Center
+}
+```
 
 `onError` {?function(error, props)} Optional callback function. If the file is successfully loaded, the first parameter `error` is `null`, and `props` contains an object with two properties: `duration` (in seconds) and `numberOfChannels` (`1` for mono and `2` for stereo sound), both of which can also be accessed from the `Sound` instance object. If an initialization error is encountered (e.g. file not found), `error` will be an object containing `code`, `description`, and the stack trace.
 
@@ -204,6 +212,12 @@ Return the loop count of the audio player. The default is `0` which means to pla
 `value` {string} Sets AVAudioSession category, which allows playing sound in background, stop sound playback when phone is locked, etc. Parameter options: "Ambient", "SoloAmbient", "Playback", "Record", "PlayAndRecord", "AudioProcessing", "MultiRoute".
 
 More info about each category can be found in https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVAudioSession_ClassReference/#//apple_ref/doc/constant_group/Audio_Session_Categories
+
+### `setOnRemotePauseHandler(value) (iOS only)`
+`value` {Function} Set a callback to be called when your audio is paused via Remote. e.g The user paused their Airplay Speaker or paused the sound from the Control Center. This will only be called if `setCategory(value)` is set to `Playback`
+
+### `setOnRemotePlayHandler(value) (iOS only)`
+`value` {Function} Set a callback to be called when your audio is played via Remote. e.g The user paused their Airplay Speaker or paused the sound from the Control Center. This will only be called if `setCategory(value)` is set to `Playback`
 
 ## Notes
 - To minimize playback delay, you may want to preload a sound file without calling `play()` (e.g. `var s = new Sound(...);`) during app initialization.
