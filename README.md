@@ -21,6 +21,8 @@ Get/set volume | ✓ | ✓
 Get/set pan | ✓ |
 Get/set loops | ✓ | ✓
 Get/set current time | ✓ | ✓ 
+Remote Support (Airplay, Chromecast, Headphones) | ✓ | 
+Track Information (Control Center iOS) | ✓ | 
 
 ## Installation
 
