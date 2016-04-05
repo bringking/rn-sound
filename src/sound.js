@@ -170,12 +170,12 @@ class Sound {
         return this;
     }
 
-    enable( enabled ) {
-        RNSound.enable(enabled);
-    }
+
 }
 
-
+Sound.enable = function( enabled ) {
+    RNSound.enable(enabled);
+};
 Sound.enableInSilenceMode = function ( enabled ) {
     RNSound.enableInSilenceMode(enabled);
 };
