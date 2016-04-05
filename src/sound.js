@@ -5,7 +5,7 @@ const IsAndroid = typeof RNSound.setLooping !== 'undefined';
 let nextKey = 0;
 
 class Sound {
-    constructor( filename, basePath, options = {}, onError = () => false ) {
+    constructor( filename, basePath, onError = () => false, options = {} ) {
         if ( IsAndroid ) {
             this._filename = filename.toLowerCase().replace(/\.[^.]+$/, '');
         } else {

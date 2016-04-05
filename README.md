@@ -148,7 +148,7 @@ whoosh.release();
 ```
 
 ## API
-### `constructor(filename, basePath, options = {}, onError = () => false)`
+### `constructor(filename, basePath, onError = () => false, options = {})`
 `filename` {string} Either absolute or relative path to the sound file
 
 `basePath` {?string} Optional base path of the file. Omit this or pass `''` if `filename` is an absolute path. Otherwise, you may use one of the predefined directories: `Sound.MAIN_BUNDLE`, `Sound.DOCUMENT`, `Sound.LIBRARY`, `Sound.CACHES`.
