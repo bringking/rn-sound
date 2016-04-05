@@ -20,32 +20,97 @@
         _commandCenter = [MPRemoteCommandCenter sharedCommandCenter];
         _commandCenter.playCommand.enabled = YES;
         _commandCenter.pauseCommand.enabled = YES;
+        _commandCenter.togglePlayPauseCommand.enabled = YES;
         _commandCenter.previousTrackCommand.enabled = YES;
         _commandCenter.nextTrackCommand.enabled = YES;
 
 
         //listen for commands
+        [_commandCenter.togglePlayPauseCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+            AVAudioPlayer* player = [self playerForKey:_lastKey];
+            if(player.playing) {
+                // pause the audio
+                [self pause:_lastKey];
+
+                // call back if defined
+                RCTResponseSenderBlock cb = [self remotePauseCallbackForKey:_lastKey];
+                if(cb) {
+                    cb(@[]);
+                }
+
+            } else {
+                // pause the audio
+                [self play:_lastKey];
+
+                // call back if defined
+                RCTResponseSenderBlock cb = [self remotePlayCallbackForKey:_lastKey];
+                if(cb) {
+                    cb(@[]);
+                }
+            }
+
+
+
+            // sync the time
+            [self setTrackInformationForKey:_lastKey];
+
+            // return
+            return MPRemoteCommandHandlerStatusSuccess;
+        }];
+
         [_commandCenter.playCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+            // play the audio
             [self play:_lastKey];
+
+            // call back if defined
             RCTResponseSenderBlock cb = [self remotePlayCallbackForKey:_lastKey];
             if(cb) {
                 cb(@[]);
             }
+            // sync the time
+            [self setTrackInformationForKey:_lastKey];
+
+            // return
             return MPRemoteCommandHandlerStatusSuccess;
         }];
         [_commandCenter.pauseCommand addTargetWithHandler:^MPRemoteCommandHandlerStatus(MPRemoteCommandEvent * _Nonnull event) {
+            // pause the audio
             [self pause:_lastKey];
+
+            // call back if defined
             RCTResponseSenderBlock cb = [self remotePauseCallbackForKey:_lastKey];
             if(cb) {
                 cb(@[]);
             }
+
+            // sync the time
+            [self setTrackInformationForKey:_lastKey];
 
             return MPRemoteCommandHandlerStatusSuccess;
         }];
     }
     return self;
 }
+-(void) setTrackInformationForKey:(nonnull NSNumber*)key{
 
+    AVAudioPlayer* player = [self playerForKey:key];
+    NSDictionary* trackInfo = [self trackInfoForKey:key];
+    MPNowPlayingInfoCenter *np = [MPNowPlayingInfoCenter defaultCenter];
+
+    if ( trackInfo ) {
+
+        np.nowPlayingInfo = @{
+                              MPMediaItemPropertyTitle:trackInfo[@"title"],
+                              MPMediaItemPropertyArtist:trackInfo[@"artist"],
+                              MPMediaItemPropertyPlaybackDuration:[NSNumber numberWithDouble:player.duration],
+                              MPNowPlayingInfoPropertyElapsedPlaybackTime: [NSNumber numberWithDouble:player.currentTime]
+                              };
+
+    }
+
+
+
+}
 /**
   Stores track information
  */
@@ -202,22 +267,13 @@ RCT_EXPORT_METHOD(play:(nonnull NSNumber*)key withCallback:(RCTResponseSenderBlo
   NSDictionary* trackInfo = [self trackInfoForKey:key];
 
   if (player) {
+    // call back for play successful
     [[self callbackPool] setObject:[callback copy] forKey:key];
+    // play
     [player play];
 
-      if(trackInfo) {
-          // set sound properties if defined
-          MPNowPlayingInfoCenter *np = [MPNowPlayingInfoCenter defaultCenter];
-
-          np.nowPlayingInfo = @{
-                                MPMediaItemPropertyTitle:trackInfo[@"title"],
-                                MPMediaItemPropertyArtist:trackInfo[@"artist"],
-                                MPMediaItemPropertyPlaybackDuration:[NSNumber numberWithDouble:player.duration],
-                                MPNowPlayingInfoPropertyElapsedPlaybackTime: [NSNumber numberWithDouble:player.currentTime]
-                                };
-      }
-
-
+    //set track info
+    [self setTrackInformationForKey:key];
   }
 }
 
