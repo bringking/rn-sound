@@ -2,7 +2,15 @@
   "name": "rn-sound",
   "version": "0.7.6",
   "description": "React Native module for playing sound clips on iOS and Android",
-  "main": "sound.js",
+  "main": "lib/sound.js",
+  "scripts": {
+    "prepublish": "npm run build",
+    "lint": "eslint src test",
+    "test": "mocha --compilers js:babel-core/register --recursive",
+    "test:watch": "npm test -- --watch",
+    "build:lib": "babel src --out-dir lib",
+    "build": "npm run lint && npm run test && npm run build:lib"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RinconStrategies/react-native-sound.git"
@@ -17,5 +25,15 @@
   "license": "MIT",
   "peerDependencies": {
     "react-native": ">=0.8.0"
+  },
+  "devDependencies":{
+    "chai": "*",
+    "mocha": "*",
+    "eslint-plugin-mocha": "~2.0.0",
+    "eslint": "2.0.0",
+    "babel-core": "^6.5.2",
+    "babel-eslint": "^4.1.3",
+    "babel-loader": "^6.2.3",
+    "babel-preset-es2015": "^6.5.0"
   }
 }
