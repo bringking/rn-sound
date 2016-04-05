@@ -167,7 +167,7 @@ whoosh.release();
 Return `true` if the sound has been loaded.
 
 ### `play(onEnd)`
-`onEnd` {?function(successfully)} Optinoal callback function that gets called when the playback finishes successfully or an audio decoding error interrupts it.
+`onEnd` {?function(successfully)} Optional callback function that gets called when the playback finishes successfully or an audio decoding error interrupts it.
 
 ### `pause()`
 Pause the sound.
