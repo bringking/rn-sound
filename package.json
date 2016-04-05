@@ -1,6 +1,6 @@
 {
   "name": "rn-sound",
-  "version": "0.7.7",
+  "version": "0.7.8",
   "description": "React Native module for playing sound clips on iOS and Android",
   "main": "lib/sound.js",
   "scripts": {
@@ -11,6 +11,12 @@
     "build:lib": "babel src --out-dir lib",
     "build": "npm run lint && npm run test && npm run build:lib"
   },
+  "files": [
+    "lib",
+    "android",
+    "RNSound",
+    "RNSound.xcodeproj"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/RinconStrategies/react-native-sound.git"
