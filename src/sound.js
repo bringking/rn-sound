@@ -173,7 +173,7 @@ class Sound {
 
 }
 
-Sound.enable = function( enabled ) {
+Sound.enable = function ( enabled ) {
     RNSound.enable(enabled);
 };
 Sound.enableInSilenceMode = function ( enabled ) {
