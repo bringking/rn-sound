@@ -5,6 +5,7 @@ React Native module for playing sound clips on iOS and Android.
 [![Dependency Status](https://david-dm.org/RinconStrategies/rn-sound.svg)](https://david-dm.org/RinconStrategies/rn-sound)
 [![peerDependency Status](https://david-dm.org/RinconStrategies/rn-sound/peer-status.svg)](https://david-dm.org/RinconStrategies/rn-sound#info=peerDependencies)
 [![devDependency Status](https://david-dm.org/RinconStrategies/rn-sound/dev-status.svg)](https://david-dm.org/RinconStrategies/rn-sound#info=devDependencies)
+[![build status](https://travis-ci.org/RinconStrategies/rn-sound.svg?branch=master)](https://travis-ci.org/RinconStrategies/rn-sound)
 
 
 
