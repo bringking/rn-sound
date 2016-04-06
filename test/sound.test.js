@@ -2,20 +2,19 @@ import chai, {expect} from 'chai';
 import dirtyChai from 'dirty-chai';
 chai.use(dirtyChai);
 
-//import sound
 import Sound from '../src/sound';
 
 describe('RNSound', ()=> {
 
-    describe("should expose static methods", ()=> {
+    describe('should expose static methods', ()=> {
         it('called "enable" that has dubious value', ()=> {
             expect(Sound.enable).to.exist();
         });
-        it('called "enableInSilenceMode" to allow sound in iOS during silence ', ()=> {
+        it('called "enableInSilenceMode" to allow sound in iOS during silence', ()=> {
             expect(Sound.enableInSilenceMode).to.exist();
         });
     });
-    describe("should expose static constants", ()=> {
+    describe('should expose static constants', ()=> {
         it('called "MAIN_BUNDLE" that specifies the path to the iOS bundle', ()=> {
             expect(Sound.MAIN_BUNDLE).to.exist();
         });
@@ -32,10 +31,10 @@ describe('RNSound', ()=> {
 
     describe('on creation', ()=> {
         it('should be loaded after creating an instance', ()=> {
-            const sound = new Sound("test", "test");
+            const sound = new Sound('test', 'test');
             expect(sound.isLoaded()).to.be.true();
-        })
-    })
+        });
+    });
 
 
 });

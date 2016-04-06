@@ -6,15 +6,15 @@ const RN = React;
 // MOCK RNSound Bridge Interface
 RN.NativeModules = {
     RNSound: {
-        enable(){
+        enable() {
             return true;
         },
         MainBundlePath: true,
         NSDocumentDirectory: true,
         NSLibraryDirectory: true,
         NSCachesDirectory: true,
-        prepare( fileName, key, options, cb ){
-            cb(null, { duration: 1000, numberOfChannels: 2 })
+        prepare( fileName, key, options, cb ) {
+            cb(null, { duration: 1000, numberOfChannels: 2 });
         }
     }
 };
