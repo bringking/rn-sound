@@ -6,7 +6,7 @@
   "scripts": {
     "prepublish": "npm run build",
     "lint": "eslint src test",
-    "test": "mocha --compilers js:babel-core/register --recursive",
+    "test": "mocha --compilers js:test/mocha_compiler.js --recursive",
     "test:watch": "npm test -- --watch",
     "build:lib": "babel src --out-dir lib",
     "build": "npm run lint && npm run test && npm run build:lib"
@@ -30,10 +30,12 @@
   "author": "Charles King <charlie@rinconstrategies.io> (http://rinconstrategies.io)",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": ">=0.8.0"
+    "react-native": ">=0.8.0",
+    "react": ">=0.14.8"
   },
   "devDependencies":{
     "chai": "*",
+    "dirty-chai": "^1.2.2",
     "mocha": "*",
     "eslint-plugin-mocha": "~2.0.0",
     "eslint": "2.0.0",
