@@ -30,7 +30,7 @@
   "author": "Charles King <charlie@rinconstrategies.io> (http://rinconstrategies.io)",
   "license": "MIT",
   "peerDependencies": {
-    "react-native": ">=0.8.0",
+    "react-native": ">=0.24.0",
     "react": ">=0.14.0 <16.0.0"
   },
   "devDependencies": {
