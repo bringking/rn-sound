@@ -33,11 +33,11 @@
     "react-native": ">=0.8.0",
     "react": ">=0.14.8"
   },
-  "devDependencies":{
+  "devDependencies": {
     "chai": "*",
     "dirty-chai": "^1.2.2",
     "mocha": "*",
-    "eslint-plugin-mocha": "~2.0.0",
+    "eslint-plugin-mocha": "~2.2.0",
     "eslint": "^2.7.0",
     "babel-cli": "^6.0.0",
     "babel-core": "^6.5.2",
