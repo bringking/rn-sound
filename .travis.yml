@@ -3,6 +3,6 @@ node_js:
   - "stable"
   - "4.4.5"
 install:
-  - npm install react@0.14.8
+  - npm install react
   - npm install react-native
   - npm install
