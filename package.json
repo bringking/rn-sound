@@ -37,7 +37,7 @@
     "chai": "*",
     "dirty-chai": "^1.2.2",
     "mocha": "2.5.3",
-    "eslint-plugin-mocha": "~2.2.0",
+    "eslint-plugin-mocha": "~3.0.0",
     "eslint": "^2.11.1",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.9.1",
