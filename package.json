@@ -31,7 +31,7 @@
   "license": "MIT",
   "peerDependencies": {
     "react-native": ">=0.24.0",
-    "react": ">=15.0.2"
+    "react": ">=15.1.0"
   },
   "devDependencies": {
     "chai": "*",
