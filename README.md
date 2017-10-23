@@ -12,7 +12,7 @@ React Native module for playing sound clips on iOS and Android.
 ## Feature matrix
 
 Feature | iOS | Android
----|---|---|---
+---|---|---
 Load sound from the app bundle | ✓ | ✓
 Load sound from other directories | ✓ |
 Load sound from the network | |
