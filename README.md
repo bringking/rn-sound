@@ -156,13 +156,13 @@ whoosh.release();
 
 ## API
 ### `constructor(filename, basePath, onError = () => false, options = {})`
-`filename` {string} Either absolute or relative path to the sound file
+`filename` **{string}** Either absolute or relative path to the sound file
 
-`basePath` {?string} Optional base path of the file. Omit this or pass `''` if `filename` is an absolute path. Otherwise, you may use one of the predefined directories: `Sound.MAIN_BUNDLE`, `Sound.DOCUMENT`, `Sound.LIBRARY`, `Sound.CACHES`.
+`basePath` **{?string}** Optional base path of the file. Omit this or pass `''` if `filename` is an absolute path. Otherwise, you may use one of the predefined directories: `Sound.MAIN_BUNDLE`, `Sound.DOCUMENT`, `Sound.LIBRARY`, `Sound.CACHES`.
 
-`onError` {?function(error, props)} Optional callback function. If the file is successfully loaded, the first parameter `error` is `null`, and `props` contains an object with two properties: `duration` (in seconds) and `numberOfChannels` (`1` for mono and `2` for stereo sound), both of which can also be accessed from the `Sound` instance object. If an initialization error is encountered (e.g. file not found), `error` will be an object containing `code`, `description`, and the stack trace.
+`onError` **{?function(error, props)}** Optional callback function. If the file is successfully loaded, the first parameter `error` is `null`, and `props` contains an object with two properties: `duration` (in seconds) and `numberOfChannels` (`1` for mono and `2` for stereo sound), both of which can also be accessed from the `Sound` instance object. If an initialization error is encountered (e.g. file not found), `error` will be an object containing `code`, `description`, and the stack trace.
 
-`options`{?object} Options object with the following options-
+`options` **{?object}** Options object with the following options-
 ```
 {
   artist:"Some Artist", // Shows artist title in iOS Control Center
@@ -174,7 +174,7 @@ whoosh.release();
 Return `true` if the sound has been loaded.
 
 ### `play(onEnd)`
-`onEnd` {?function(successfully)} Optional callback function that gets called when the playback finishes successfully or an audio decoding error interrupts it.
+`onEnd` **{?function(successfully)}** Optional callback function that gets called when the playback finishes successfully or an audio decoding error interrupts it.
 
 ### `pause()`
 Pause the sound.
@@ -195,36 +195,36 @@ Return the number of channels (`1` for mono and `2` for stereo sound), or `-1` b
 Return the volume of the audio player (not the system-wide volume), ranging from `0.0` (silence) through `1.0` (full volume, the default).
 
 ### `setVolume(value)`
-`value` {number} Set the volume, ranging from `0.0` (silence) through `1.0` (full volume).
+`value` **{number}** Set the volume, ranging from `0.0` (silence) through `1.0` (full volume).
 
 ### `getPan()`
 Return the stereo pan position of the audio player (not the system-wide pan), ranging from `-1.0` (full left) through `1.0` (full right). The default value is `0.0` (center).
 
 ### `setPan(value)`
-`value` {number} Set the pan, ranging from `-1.0` (full left) through `1.0` (full right).
+`value` **{number}** Set the pan, ranging from `-1.0` (full left) through `1.0` (full right).
 
 ### `getNumberOfLoops()`
 Return the loop count of the audio player. The default is `0` which means to play the sound once. A positive number specifies the number of times to return to the start and play again. A negative number indicates an indefinite loop.
 
 ### `setNumberOfLoops(value)`
-`value` {number} Set the loop count. `0` means to play the sound once. A positive number specifies the number of times to return to the start and play again (iOS only). A negative number indicates an indefinite loop (iOS and Android).
+`value` **{number}** Set the loop count. `0` means to play the sound once. A positive number specifies the number of times to return to the start and play again (iOS only). A negative number indicates an indefinite loop (iOS and Android).
 
 ### `getCurrentTime(callback)`
-`callback` {function(seconds, isPlaying)} Callback will receive the current playback position in seconds and whether the sound is being played.
+`callback` **{function(seconds, isPlaying)}** Callback will receive the current playback position in seconds and whether the sound is being played.
 
 ### `setCurrentTime(value)`
-`value` {number} Seek to a particular playback point in seconds.
+`value` **{number}** Seek to a particular playback point in seconds.
 
 ### `setCategory(value) (iOS only)`
-`value` {string} Sets AVAudioSession category, which allows playing sound in background, stop sound playback when phone is locked, etc. Parameter options: "Ambient", "SoloAmbient", "Playback", "Record", "PlayAndRecord", "AudioProcessing", "MultiRoute".
+`value` **{string}** Sets AVAudioSession category, which allows playing sound in background, stop sound playback when phone is locked, etc. Parameter options: "Ambient", "SoloAmbient", "Playback", "Record", "PlayAndRecord", "AudioProcessing", "MultiRoute".
 
 More info about each category can be found in https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVAudioSession_ClassReference/#//apple_ref/doc/constant_group/Audio_Session_Categories
 
 ### `setOnRemotePauseHandler(value) (iOS only)`
-`value` {Function} Set a callback to be called when your audio is paused via Remote. e.g The user paused their Airplay Speaker or paused the sound from the Control Center. This will only be called if `setCategory(value)` is set to `Playback`
+`value` **{function}** Set a callback to be called when your audio is paused via Remote. e.g The user paused their Airplay Speaker or paused the sound from the Control Center. This will only be called if `setCategory(value)` is set to `Playback`
 
 ### `setOnRemotePlayHandler(value) (iOS only)`
-`value` {Function} Set a callback to be called when your audio is played via Remote. e.g The user paused their Airplay Speaker or paused the sound from the Control Center. This will only be called if `setCategory(value)` is set to `Playback`
+`value` **{function}** Set a callback to be called when your audio is played via Remote. e.g The user paused their Airplay Speaker or paused the sound from the Control Center. This will only be called if `setCategory(value)` is set to `Playback`
 
 ## Notes
 - To minimize playback delay, you may want to preload a sound file without calling `play()` (e.g. `var s = new Sound(...);`) during app initialization.
